@@ -4,11 +4,13 @@
 # You only need to specify overrides for `main` and define additional services.
 services:
   main:
+    platform: linux/amd64
     depends_on:
       desktop:
         condition: service_healthy
 
   desktop:
+    platform: linux/amd64
     build:
       context: ./desktop
     expose:
