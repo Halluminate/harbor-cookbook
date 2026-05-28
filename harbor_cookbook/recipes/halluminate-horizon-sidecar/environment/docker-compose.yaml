@@ -1,0 +1,26 @@
+# This file is merged on top of Harbor's base docker-compose config.
+services:
+  main:
+    platform: linux/amd64
+    depends_on:
+      halluminate:
+        condition: service_healthy
+
+  halluminate:
+    platform: linux/amd64
+    build:
+      context: ./halluminate
+      args:
+        HALLUMINATE_IMAGE: ${HALLUMINATE_IMAGE:-horizon-local-wyatt-test-problem-tagging:halluminate-horizon-e1ee7b24}
+    expose:
+      - "8000"
+      - "6080"
+    environment:
+      COMPUTER_WIDTH_PX: "1400"
+      COMPUTER_HEIGHT_PX: "850"
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import socket; s=socket.create_connection(('localhost',8000),timeout=2); s.close()"]
+      interval: 2s
+      timeout: 5s
+      retries: 60
+      start_period: 10s

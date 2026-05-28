@@ -27,6 +27,11 @@
       "path": "recipes/computer-use-ubuntu"
     },
     {
+      "name": "halluminate-horizon-sidecar",
+      "description": "Runs a generated Halluminate/Horizon problem image as a Harbor sidecar exposed through MCP.",
+      "path": "recipes/halluminate-horizon-sidecar"
+    },
+    {
       "name": "dns-blacklisting",
       "description": "Pattern-based hostname blacklisting via a local HTTP gateway with exact, wildcard, and regex rules.",
       "path": "recipes/dns-blacklisting"
